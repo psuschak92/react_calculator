@@ -10,6 +10,7 @@ class Calculator extends React.Component {
             outputScreen: 0
         };
         this.updateScreen = this.updateScreen.bind(this);
+        this.calculateTotal = this.calculateTotal.bind(this);
     }
 
     updateScreen(buttonVal) {
@@ -30,6 +31,8 @@ class Calculator extends React.Component {
         let str = this.state.formulaScreen;
         let arr =str.split(' ');
         // converts all str to num
+        // TODO:
+        // 1. convert both loops to functions that takes an array
         for(let i = 0; i < arr.length; i++) {
             if(arr[i] === '+' || arr[i] === '-' || arr[i] === '*' || arr[i] === '/') {
                 continue;
