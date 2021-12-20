@@ -27,12 +27,29 @@ class Calculator extends React.Component {
         }
     }
 
+    collapseArray(arr, str) {
+        while(arr.indexOf(str) !== -1) {
+            let result;
+            let num1 = arr[arr.indexOf(str) - 1];
+            let num2 = arr[arr.indexOf(str) + 1];
+            if(str === '*') {
+                result = num1 * num2;
+            } else if(str === '/') {
+                result = num1 / num2;
+            } else if(str === '+') {
+                result = num1 + num2;
+            } else if(str === '-') {
+                result = num1 - num2;
+            }
+            arr.splice(arr.indexOf(str) - 1, 3, result);
+        }
+        return arr;
+    }
+
     calculateTotal() {
         let str = this.state.formulaScreen;
         let arr =str.split(' ');
-        // converts all str to num
-        // TODO:
-        // 1. convert both loops to functions that takes an array
+
         for(let i = 0; i < arr.length; i++) {
             if(arr[i] === '+' || arr[i] === '-' || arr[i] === '*' || arr[i] === '/') {
                 continue;
@@ -44,6 +61,14 @@ class Calculator extends React.Component {
                 }
             }
         }
+        // handle any multiplication or division operations first
+        if(arr.indexOf('*') !== -1) {
+            this.collapseArray(arr, '*');
+        }
+        if(arr.indexOf('/') !== -1) {
+            this.collapseArray(arr, '/');
+        }
+
         // apply the necessary operations to `total`
         let total = 0;
         for(let i = 0; i < arr.length; i++) {
@@ -55,16 +80,17 @@ class Calculator extends React.Component {
             } else if(arr[i] === '-') {
                 total -= arr[i + 1];
                 i++;
-            } else if(arr[i] === '*') {
-                total *= arr[i + 1];
-                i++;
-            } else if(arr[i] === '/') {
-                total /= arr[i + 1];
-                i++;
             }
         }
         this.setState({
             outputScreen: total
+        });
+    }
+
+    clearScreen() {
+        this.setState({
+            formulaScreen: '',
+            outputScreen: 0
         });
     }
 
@@ -85,7 +111,7 @@ class Calculator extends React.Component {
                     </div>
                 </div>
                 <div className='buttons'>
-                    <Button buttonID='clear' buttonType='AC' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonID='clear' buttonType='AC' onClick={() => this.clearScreen()} />
                     <Button buttonID='divide' buttonType='/' onClick={(e) => this.updateScreen(e.target.value)} />
                     <Button buttonID='multiply' buttonType='*' onClick={(e) => this.updateScreen(e.target.value)} />
                     <Button buttonID='subtract' buttonType='-' onClick={(e) => this.updateScreen(e.target.value)} />
