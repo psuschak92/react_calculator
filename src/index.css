@@ -11,3 +11,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.calculator {
+  margin: auto;
+  margin-top: 3rem;
+  width: 15rem;
+  height: fit-content;
+  background-color: black;
+  padding: 10px;
+}
+
+/* button styling */
+
+.buttons {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+button {
+  font-size: medium;
+  padding: 12px;
+}
+
+.digit {
+  background-color: darkslategray;
+  color: white;
+  /* font-size: medium;
+  padding: 10px; */
+}
+
+.operation {
+  background-color: darkslateblue;
+  color: white;
+  /* font-size: medium;
+  padding: 10px; */
+}
+
+#clear {
+  background-color: tomato;
+  color: white;
+  grid-column: span 2;
+  /* font-size: medium;
+  padding: 10px; */
+}
+
+#equals {
+  background-color: chartreuse;
+  color: white;
+  grid-row: span 2;
+  /* font-size: medium;
+  padding: 10px; */
+}
+
+#zero {
+  grid-column: span 2;
+}
+
+/* screen styling */
+
+.screen {
+  text-align: right;
+  color: white;
+}

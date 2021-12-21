@@ -43,7 +43,6 @@ class Calculator extends React.Component {
             }
             arr.splice(arr.indexOf(str) - 1, 3, result);
         }
-        return arr;
     }
 
     calculateTotal() {
@@ -95,11 +94,6 @@ class Calculator extends React.Component {
     }
 
     render() {
-        // let arr = [];
-        // for(let i = 0; i < this.state.formulaScreen.length; i++) {
-        //     arr.push(this.state.formulaScreen[i]);
-        // }
-        // console.log(arr.join(' '));
         return (
             <div className='calculator'>
                 <div className='screen'>
@@ -112,22 +106,22 @@ class Calculator extends React.Component {
                 </div>
                 <div className='buttons'>
                     <Button buttonID='clear' buttonType='AC' onClick={() => this.clearScreen()} />
-                    <Button buttonID='divide' buttonType='/' onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='multiply' buttonType='*' onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='subtract' buttonType='-' onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='add' buttonType='+' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='operation' buttonID='divide' buttonType='/' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='operation' buttonID='multiply' buttonType='*' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='seven' buttonType={7} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='eight' buttonType={8} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='nine' buttonType={9} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='operation' buttonID='subtract' buttonType='-' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='four' buttonType={4} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='five' buttonType={5} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='six' buttonType={6} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='operation' buttonID='add' buttonType='+' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='one' buttonType={1} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='two' buttonType={2} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='three' buttonType={3} onClick={(e) => this.updateScreen(e.target.value)} />
                     <Button buttonID='equals' buttonType='=' onClick={() => this.calculateTotal()} />
-                    <Button buttonID='period' buttonType='.' onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='zero' buttonType={0} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='one' buttonType={1} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='two' buttonType={2} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='three' buttonType={3} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='four' buttonType={4} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='five' buttonType={5} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='six' buttonType={6} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='seven' buttonType={7} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='eight' buttonType={8} onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonID='nine' buttonType={9} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='zero' buttonType={0} onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='digit' buttonID='period' buttonType='.' onClick={(e) => this.updateScreen(e.target.value)} />
                 </div>
             </div>
         );
