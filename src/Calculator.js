@@ -61,7 +61,7 @@ class Calculator extends React.Component {
             }
         }
 
-        if(arr.includes('x') && arr.includes('/') && !arr.includes('+') && !arr.includes('-')) {
+        if(arr.includes('x') && arr.includes('/')) {
             if(arr.indexOf('x') < arr.indexOf('/')) {
                 this.collapseArray(arr, 'x');
                 this.collapseArray(arr, '/');
@@ -71,10 +71,10 @@ class Calculator extends React.Component {
             }
         }
         // handle any multiplication or division operations first
-        if(arr.indexOf('x') !== -1) {
+        if(arr.includes('x')) {
             this.collapseArray(arr, 'x');
         }
-        if(arr.indexOf('/') !== -1) {
+        if(arr.includes('/')) {
             this.collapseArray(arr, '/');
         }
 
