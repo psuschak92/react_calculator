@@ -12,13 +12,18 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: digital;
+  src: url(digital-7.regular.ttf);
+}
+
 .calculator {
   margin: auto;
-  margin-top: 3rem;
-  width: 15rem;
+  margin-top: 6rem;
+  width: 20rem;
   height: fit-content;
   background-color: black;
-  padding: 10px;
+  padding: 2px;
 }
 
 /* button styling */
@@ -29,26 +34,30 @@ code {
 }
 
 button {
-  font-size: medium;
-  padding: 12px;
+  font-size: x-large;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+  padding: 18px;
+  outline: 1px solid black;
+  border: none;
 }
 
 .digit {
-  background-color: darkslategray;
+  background-color: #757575;
   color: white;
   /* font-size: medium;
   padding: 10px; */
 }
 
 .operation {
-  background-color: darkslateblue;
+  background-color: #A8A8A8;
   color: white;
   /* font-size: medium;
   padding: 10px; */
 }
 
 #clear {
-  background-color: tomato;
+  background-color: #D94141;
   color: white;
   grid-column: span 2;
   /* font-size: medium;
@@ -56,7 +65,7 @@ button {
 }
 
 #equals {
-  background-color: chartreuse;
+  background-color: #35B035;
   color: white;
   grid-row: span 2;
   /* font-size: medium;
@@ -67,9 +76,25 @@ button {
   grid-column: span 2;
 }
 
+/* #period {
+  outline: none;
+} */
+
 /* screen styling */
 
 .screen {
   text-align: right;
   color: white;
+  font-family: digital;
+  padding-right: 4px;
+}
+
+.outputScreen {
+  font-size: 37px;
+}
+
+.formulaScreen {
+  min-height: 30px;
+  font-size: 23px;
+  color: orange;
 }

@@ -14,7 +14,7 @@ class Calculator extends React.Component {
     }
 
     updateScreen(buttonVal) {
-        if(buttonVal === '+' || buttonVal === '-' || buttonVal === '/' || buttonVal === '*') {
+        if(buttonVal === '+' || buttonVal === '-' || buttonVal === '/' || buttonVal === 'x') {
             this.setState((state) => ({
                 formulaScreen: state.formulaScreen + ' ' + buttonVal + ' ',
                 outputScreen: buttonVal
@@ -32,7 +32,7 @@ class Calculator extends React.Component {
             let result;
             let num1 = arr[arr.indexOf(str) - 1];
             let num2 = arr[arr.indexOf(str) + 1];
-            if(str === '*') {
+            if(str === 'x') {
                 result = num1 * num2;
             } else if(str === '/') {
                 result = num1 / num2;
@@ -50,7 +50,7 @@ class Calculator extends React.Component {
         let arr =str.split(' ');
 
         for(let i = 0; i < arr.length; i++) {
-            if(arr[i] === '+' || arr[i] === '-' || arr[i] === '*' || arr[i] === '/') {
+            if(arr[i] === '+' || arr[i] === '-' || arr[i] === 'x' || arr[i] === '/') {
                 continue;
             } else {
                 if(arr[i].includes('.')) {
@@ -60,9 +60,19 @@ class Calculator extends React.Component {
                 }
             }
         }
+
+        if(arr.includes('x') && arr.includes('/') && !arr.includes('+') && !arr.includes('-')) {
+            if(arr.indexOf('x') < arr.indexOf('/')) {
+                this.collapseArray(arr, 'x');
+                this.collapseArray(arr, '/');
+            } else if(arr.indexOf('x') > arr.indexOf('/')) {
+                this.collapseArray(arr, '/');
+                this.collapseArray(arr, 'x');
+            }
+        }
         // handle any multiplication or division operations first
-        if(arr.indexOf('*') !== -1) {
-            this.collapseArray(arr, '*');
+        if(arr.indexOf('x') !== -1) {
+            this.collapseArray(arr, 'x');
         }
         if(arr.indexOf('/') !== -1) {
             this.collapseArray(arr, '/');
@@ -98,7 +108,7 @@ class Calculator extends React.Component {
             <div className='calculator'>
                 <div className='screen'>
                     <div className='formulaScreen'>
-                        {this.state.formulaScreen}
+                        {this.state.formulaScreen.replace(/ +/g, "")}
                     </div>
                     <div className='outputScreen'>
                         {this.state.outputScreen}
@@ -107,7 +117,7 @@ class Calculator extends React.Component {
                 <div className='buttons'>
                     <Button buttonID='clear' buttonType='AC' onClick={() => this.clearScreen()} />
                     <Button buttonClass='operation' buttonID='divide' buttonType='/' onClick={(e) => this.updateScreen(e.target.value)} />
-                    <Button buttonClass='operation' buttonID='multiply' buttonType='*' onClick={(e) => this.updateScreen(e.target.value)} />
+                    <Button buttonClass='operation' buttonID='multiply' buttonType='x' onClick={(e) => this.updateScreen(e.target.value)} />
                     <Button buttonClass='digit' buttonID='seven' buttonType={7} onClick={(e) => this.updateScreen(e.target.value)} />
                     <Button buttonClass='digit' buttonID='eight' buttonType={8} onClick={(e) => this.updateScreen(e.target.value)} />
                     <Button buttonClass='digit' buttonID='nine' buttonType={9} onClick={(e) => this.updateScreen(e.target.value)} />
