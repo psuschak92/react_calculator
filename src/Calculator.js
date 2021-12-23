@@ -60,7 +60,7 @@ class Calculator extends React.Component {
                 }
             }
         }
-
+        // handle any multiplication or division operations first
         if(arr.includes('x') && arr.includes('/')) {
             if(arr.indexOf('x') < arr.indexOf('/')) {
                 this.collapseArray(arr, 'x');
@@ -70,7 +70,7 @@ class Calculator extends React.Component {
                 this.collapseArray(arr, 'x');
             }
         }
-        // handle any multiplication or division operations first
+        
         if(arr.includes('x')) {
             this.collapseArray(arr, 'x');
         }

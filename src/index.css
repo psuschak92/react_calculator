@@ -23,7 +23,7 @@ code {
   width: 20rem;
   height: fit-content;
   background-color: black;
-  padding: 2px;
+  padding: 3px;
 }
 
 /* button styling */
@@ -35,8 +35,7 @@ code {
 
 button {
   font-size: x-large;
-  font-family: 'Arial Narrow', Arial, sans-serif;
-  font-weight: normal;
+  font-family: Arial, sans-serif;
   padding: 18px;
   outline: 1px solid black;
   border: none;
@@ -68,6 +67,7 @@ button {
   background-color: #35B035;
   color: white;
   grid-row: span 2;
+  position: relative;
   /* font-size: medium;
   padding: 10px; */
 }
@@ -95,6 +95,6 @@ button {
 
 .formulaScreen {
   min-height: 30px;
-  font-size: 23px;
+  font-size: 25px;
   color: orange;
 }
